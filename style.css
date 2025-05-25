@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Young+Serif&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    display: flex;
+    height: 100vmin;
+    font-family: 'Inter';
+}
+
+span {
+    font-weight: bold;
+}
+
+#side-bar{
+    background-color: #cce3de;
+    width: 35vmin;
+    padding-top: 2.5vmin;
+    padding-left: 2vmin;
+    display: flex;
+    flex-direction: column;
+    gap: 5vmin;
+}
+
+#user-info{
+    background-color: lightblue;
+    display: flex;
+
+    align-items: center;
+    gap: 1vmin;
+    font-size: 1.4rem;
+}
+
+#user-info img{
+    height: 4vmin;
+}
+
+#action-container{
+    background-color: lightcoral;
+    display: flex;
+    flex-direction: column;
+    gap: 1vmin;
+}
+
+.action{
+    background-color: lightgoldenrodyellow;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.action img{
+    width: 3vmin;
+}
+
+
+#project-container{
+    background-color: lightsteelblue;
+    display: flex;
+    flex-direction: column;
+    gap: 1vmin;
+}
+
+.project{
+    background-color: lightgreen;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+}
+
+.project img{
+    width: 3vmin;
+
+}
+
+#main-container{
+    background-color: #eaf4f4;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10vmin 7vmin 0vmin 7vmin;
+}
+
+#todo-section{
+    background-color: lightskyblue;
+    flex: 1;
+}
+
+#todo-section h1{
+    font-size: 3rem;
+}
+
+.todo-section-project{
+    background-color: lightcoral;
+    margin-top: 5vmin;
+    margin-bottom: 5vmin;
+
+}
+
+
+
+.todo-section-project p{
+    font-size: 1.35rem;
+    padding-bottom: 1.8vmin;
+    border-bottom: 1px solid black;
+    font-weight: bold
+}
+
+.tasks-container{
+    background-color: lightseagreen;
+    font-size: 1.2rem;
+    
+}
+
+.task{
+    display: flex;
+    align-items: center;
+    padding-top: 1.8vmin;
+    padding-bottom: 1.8vmin;
+    border-bottom: 1px solid black;
+}
+
+.task-details{
+    background-color: white;
+    padding-left: 0.5vmin;
+
+}
+
+.task-name{
+    display: flex;
+    gap: 1vmin;
+}
+
+.date-time{
+    padding-left: 2.6vmin;
+}
+
+
+
+
+
+
+#add-task{
+    font-size: 2rem;
+    background-color: lightpink;
+    height: 8vmin;
+    width: 8vmin;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 5vmin;
+    right: 6vmin;
+}
+
+#add-task img{
+    width: 4vmin;
+}
