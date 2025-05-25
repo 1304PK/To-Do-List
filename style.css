@@ -15,6 +15,11 @@ span {
     font-weight: bold;
 }
 
+button{
+    border: none;
+    cursor: pointer
+}
+
 #side-bar{
     background-color: #cce3de;
     width: 35vmin;
@@ -89,7 +94,7 @@ span {
     flex: 1;
 }
 
-#todo-section h1{
+#main-container h1{
     font-size: 3rem;
 }
 
@@ -109,11 +114,11 @@ span {
     font-weight: bold
 }
 
-.tasks-container{
+/* .tasks-container{
     background-color: lightseagreen;
     font-size: 1.2rem;
     
-}
+} */
 
 .task{
     display: flex;
