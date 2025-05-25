@@ -50,6 +50,39 @@ function updateTasks(){
 }
 
 function renderTasksDOM(){
+    const removeTask = document.querySelectorAll('.task')
+    removeTask.forEach((item) => {
+        item.remove()
+    })
+
+    mainArray.forEach((object) => {
+        object.tasks.forEach((objects) => {
+            const task = document.createElement('div')
+            task.classList.add('task')
+            const taskDetails = document.createElement('div')
+            taskDetails.classList.add('task-details')
+            const taskName = document.createElement('div')
+            taskName.classList.add('task-name')
+            const radioInput = document.createElement('input')
+            radioInput.setAttribute('type', 'radio')
+            
+            const span = document.createElement('span')
+            span.textContent = objects
+            taskName.append(radioInput, span)
+
+            
+
+            const dateTime = document.createElement('div')
+            dateTime.classList.add('date-time')
+            dateTime.textContent = ('Date and Time')
+
+            taskDetails.append(taskName, dateTime)
+            task.append(taskDetails)
+
+            const projectDiv = document.getElementById(object.project_name)
+            projectDiv.append(task)
+        })
+    })
     
 }
 
@@ -59,6 +92,8 @@ function renderProjectsDOM(){
     mainArray.forEach((object) => {
         const projDiv = document.createElement('div')
         projDiv.classList.add('todo-section-project')
+        projDiv.setAttribute('id', object.project_name)
+
         const projName = document.createElement('p')
         projName.classList.add('project-name')
         projName.textContent = object.project_name
@@ -67,6 +102,8 @@ function renderProjectsDOM(){
         todoSection.append(projDiv)
 
     })
+
+    renderTasksDOM()
     
 }
 
@@ -95,6 +132,7 @@ closeTaskDialog.addEventListener("click", (e) => {
 
     taskDialog.close()
     updateTasks()
+    renderTasksDOM()
 
 
 })
