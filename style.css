@@ -121,6 +121,7 @@ button{
 } */
 
 .task{
+    background-color: lightseagreen;
     display: flex;
     align-items: center;
     padding-top: 1.8vmin;
