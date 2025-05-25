@@ -17,10 +17,11 @@
         </div>
 
         <div id="action-container">
-            <div class="action">
+            <button class="action" id="add-project">
+                
                 <img src="assets/user-logo.png" alt="">
                 <span>Add Project</span>
-            </div>
+            </button>
             <div class="action">
                 <img src="assets/user-logo.png" alt="">
                 Today
@@ -54,15 +55,15 @@
     </section>
 
     <div id="main-container">
-
+        <h1>To-Do List</h1>
         <div id="todo-section">
-            <h1>To-Do List</h1>
+            
             <div class="todo-section-project">
                 <p class="project-name">
                     Project 1
                 </p>
 
-                <div class="tasks-container">
+                <!-- <div class="tasks-container"> -->
                     <div class="task">
                         
                         <div class="task-details">
@@ -90,16 +91,44 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                <!-- </div> -->
             </div>
         </div>
 
 
     </div>
 
-    <div id="add-task">
+    <button id="add-task">
+
         <img src="assets/user-logo.png" alt="">
-    </div>
+
+    </button>
+
+    <dialog id="project-dialog">
+        <h2>add project</h2>
+        <form id="project-form">
+            <label for="project-input"></label>
+            <input type="text" id="project-input">
+            <button id="project-dialog-close">
+                CLOSE BITCH
+            </button>
+        </form>
+    </dialog>
+
+    <dialog id="task-dialog">
+        <h2>add Task</h2>
+        <form id="task-form">
+            <label for="project-options">Select the Project</label>
+            <select id="project-options">
+            </select>
+            <label for="task-input"></label>
+            <input type="text" id="task-input">
+            <button id="task-dialog-close">
+                CLOSE BITCH
+            </button>
+        </form>
+    </dialog>
+    <script src="script.js"></script>
 </body>
 
 </html>
