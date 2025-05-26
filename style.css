@@ -22,14 +22,15 @@ button {
 }
 
 #side-bar {
-    background-color: #202D48;
+    background-color: #A18AFF;
     width: 35vmin;
     padding-top: 2.5vmin;
     padding-left: 2vmin;
+    padding-right: 2vmin;
     display: flex;
     flex-direction: column;
     gap: 5vmin;
-    color: white;
+    /* color: white; */
 }
 
 #user-info {
@@ -46,10 +47,12 @@ button {
 }
 
 #action-container {
-    /* background-color: lightcoral; */
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 2vmin;
     display: flex;
     flex-direction: column;
-    gap: 1vmin;
+    gap: 0.1vmin;
 }
 
 .action {
@@ -57,6 +60,10 @@ button {
     display: flex;
     align-items: center;
     font-size: 1.2rem;
+    font-weight: bold;
+    padding-top: 0.5vmin;
+    padding-bottom: 0.5vmin;
+    border-radius: 8px;
 }
 
 .action img {
@@ -65,7 +72,9 @@ button {
 
 
 #project-section {
-
+    background-color: #ffffff;
+    padding: 2vmin;
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
     gap: 1vmin;
@@ -87,7 +96,7 @@ button {
     font-size: 1.2rem;
     display: flex;
     align-items: center;
-    color: white;
+    /* color: white; */
     font-weight: bold;
 }
 
@@ -96,10 +105,19 @@ button {
 
 }
 
+.sidebar-button{
+    transition: background-color 250ms;
+}
+
+.sidebar-button:hover{
+    background-color: #cdb4db;
+}
+
+
 
 
 #main-container {
-    background-color: #FFFFFF;
+    background-color: #edede9;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -141,7 +159,7 @@ button {
 }
 
 .task-details {
-    background-color: white;
+    /* background-color: white; */
     padding-left: 0.5vmin;
 
 }
@@ -178,3 +196,81 @@ button {
 #add-task img {
     width: 4vmin;
 }
+
+/* DIALOG */
+
+#project-dialog{
+    border-radius: 10px;
+    padding: 2vmin;
+    margin-left: 50vmax;
+    margin-top: 50vmin;
+    transform: translate(-50%, -50%)
+
+}
+
+#project-form{
+    display: flex;
+    margin-top: 3vmin;
+}
+
+#project-form label{
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    margin-right: 1vmin;
+}
+
+#project-form input{
+    font-size: 1.1rem;
+    padding: 0.4vmin 1vmin;
+}
+
+#project-form button{
+    background-color: lightgreen;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0vmin 1.5vmin;
+    margin-left: 9vmin;
+    border-radius: 5px;
+}
+
+/* TASK DIALOG */
+
+#task-dialog{
+    border-radius: 10px;
+    padding: 2vmin;
+    margin-left: 50vmax;
+    margin-top: 50vmin;
+    transform: translate(-50%, -50%)
+
+}
+
+#task-form{
+    margin-top: 4vmin;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.3rem;
+    gap: 2.5vmin;
+    align-items: flex-start;
+}
+
+#task-form select{
+    font-size: 1.1rem;
+    padding: 0.3vmin 1vmin;
+}
+
+#task-form input{
+    font-size: 1.1rem;
+    padding: 0.4vmin 1vmin;
+}
+
+#task-form button{
+    border-radius: 5px;
+    background-color: lightgreen;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 1vmin 1vmin;
+    margin-top: 3vmin;
+    align-self: center;
+}
+
