@@ -33,7 +33,10 @@ const selectTag = document.getElementById('project-options')
 
 const projectContainer = document.getElementById('project-container')
 
+// FORMS
 
+const taskForm = document.getElementById('task-form')
+const projectForm = document.getElementById('project-form')
 
 function updateTasks() {
     Projects.forEach((object) => {
@@ -41,9 +44,12 @@ function updateTasks() {
             object.tasks.push(taskInput.value)
         }
     })
+    
 }
 
-function renderTasksDOM(item) {
+function renderTasksDOM(item=selectTag.value) {
+    mainContainer.innerHTML = ''
+
     const rt_projName = document.createElement('h1')
     rt_projName.textContent = item.project_name
 
@@ -82,14 +88,7 @@ function renderTasksDOM(item) {
     mainContainer.append(rt_projName, taskSection)
 }
 
-
-function updateProjects() {
-
-
-    const project = new createProject(projectInput.value)
-    Projects.push(project)
-
-
+function updateSelectTag(){
     selectTag.innerHTML = ''
     Projects.forEach((object) => {
         const option = document.createElement('option')
@@ -98,6 +97,17 @@ function updateProjects() {
 
         selectTag.append(option)
     })
+} 
+
+function updateProjects() {
+
+
+    const project = new createProject(projectInput.value)
+    Projects.push(project)
+    projectForm.reset()
+    updateSelectTag()
+
+    
 }
 
 function renderProjectsDOM() {
@@ -106,6 +116,7 @@ function renderProjectsDOM() {
     Projects.forEach((object) => {
         const projBtn = document.createElement('button')
         projBtn.classList.add('project')
+        projBtn.classList.add('sidebar-button')
         const projLogo = document.createElement('img')
         projLogo.setAttribute('src', 'assets/user-logo.png')
         const projName = document.createElement('p')
@@ -117,7 +128,7 @@ function renderProjectsDOM() {
     const projectBtn = document.querySelectorAll('.project')
     projectBtn.forEach((object) => {
         object.addEventListener("click", () => {
-            mainContainer.innerHTML = ''
+            
             Projects.forEach((item) => {
                 if (item.project_name === object.textContent.trim()) {
 
@@ -130,7 +141,7 @@ function renderProjectsDOM() {
 
 
 addProjectBtn.addEventListener("click", () => {
-    projectDialog.show()
+    projectDialog.showModal()
 })
 
 closeProjectDialog.addEventListener("click", (e) => {
@@ -144,15 +155,23 @@ closeProjectDialog.addEventListener("click", (e) => {
 
 addTaskBtn.addEventListener("click", () => {
 
-    taskDialog.show()
+    taskDialog.showModal()
 })
 
 closeTaskDialog.addEventListener("click", (e) => {
     e.preventDefault()
 
     taskDialog.close()
-    updateTasks()
 
+    updateTasks()
+    Projects.forEach((object) => {
+        if (object.project_name === selectTag.value){
+            renderTasksDOM(object)
+        }
+    })
+    taskForm.reset()
+    
 })
 
 renderProjectsDOM()
+updateSelectTag()
