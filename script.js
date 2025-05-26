@@ -1,22 +1,29 @@
-const mainArray = []
+const Projects = []
 
-class Project{
-    constructor(project_name){
+class createProject {
+    constructor(project_name) {
         this.project_name = project_name
         this.tasks = []
     }
 }
 
+const defaultProject = new createProject('Default Project')
+Projects.push(defaultProject)
+
+
+
 const addProjectBtn = document.getElementById('add-project')
 const projectDialog = document.getElementById('project-dialog')
 const closeProjectDialog = document.getElementById('project-dialog-close')
-const projectForm = document.getElementById('project-form')
+
 
 const addTaskBtn = document.getElementById('add-task')
 const taskDialog = document.getElementById('task-dialog')
 const closeTaskDialog = document.getElementById('task-dialog-close')
 
-const todoSection = document.getElementById('todo-section')
+
+
+const mainContainer = document.getElementById('main-container')
 
 // INPUTS
 const projectInput = document.getElementById('project-input')
@@ -24,15 +31,67 @@ const taskInput = document.getElementById('task-input')
 
 const selectTag = document.getElementById('project-options')
 
-function updateProjects(){
-    
+const projectContainer = document.getElementById('project-container')
 
-    const project = new Project(projectInput.value)
-    mainArray.push(project)
+
+
+function updateTasks() {
+    Projects.forEach((object) => {
+        if (object.project_name === selectTag.value) {
+            object.tasks.push(taskInput.value)
+        }
+    })
+}
+
+function renderTasksDOM(item) {
+    const rt_projName = document.createElement('h1')
+    rt_projName.textContent = item.project_name
+
+    const taskSection = document.createElement('div')
+    taskSection.classList.add('task-section')
+
+    const taskHeading = document.createElement('p')
+    taskHeading.textContent = 'Tasks'
+    taskSection.append(taskHeading)
+    item.tasks.forEach((taskitem) => {
+        const task = document.createElement('div')
+        task.classList.add('task')
+        const taskDetails = document.createElement('div')
+        taskDetails.classList.add('task-details')
+        const taskName = document.createElement('div')
+        taskName.classList.add('task-name')
+        const radioInput = document.createElement('input')
+        radioInput.setAttribute('type', 'radio')
+        const span = document.createElement('span')
+        span.textContent = taskitem
+        taskName.append(radioInput, span)
+
+        const dateTime = document.createElement('div')
+        dateTime.classList.add('date-time')
+        dateTime.textContent = ('Date and Time')
+
+        taskDetails.append(taskName, dateTime)
+        task.append(taskDetails)
+
+        taskSection.append(task)
+    })
+
+
+
+
+    mainContainer.append(rt_projName, taskSection)
+}
+
+
+function updateProjects() {
+
+
+    const project = new createProject(projectInput.value)
+    Projects.push(project)
 
 
     selectTag.innerHTML = ''
-    mainArray.forEach((object) => {
+    Projects.forEach((object) => {
         const option = document.createElement('option')
         option.setAttribute('id', object.project_name)
         option.textContent = object.project_name
@@ -41,71 +100,34 @@ function updateProjects(){
     })
 }
 
-function updateTasks(){
-    mainArray.forEach((object) => {
-        if (object.project_name === selectTag.value){
-            object.tasks.push(taskInput.value)
-        }
-    })
-}
+function renderProjectsDOM() {
 
-function renderTasksDOM(){
-    const removeTask = document.querySelectorAll('.task')
-    removeTask.forEach((item) => {
-        item.remove()
-    })
-
-    mainArray.forEach((object) => {
-        object.tasks.forEach((objects) => {
-            const task = document.createElement('div')
-            task.classList.add('task')
-            const taskDetails = document.createElement('div')
-            taskDetails.classList.add('task-details')
-            const taskName = document.createElement('div')
-            taskName.classList.add('task-name')
-            const radioInput = document.createElement('input')
-            radioInput.setAttribute('type', 'radio')
-            
-            const span = document.createElement('span')
-            span.textContent = objects
-            taskName.append(radioInput, span)
-
-            
-
-            const dateTime = document.createElement('div')
-            dateTime.classList.add('date-time')
-            dateTime.textContent = ('Date and Time')
-
-            taskDetails.append(taskName, dateTime)
-            task.append(taskDetails)
-
-            const projectDiv = document.getElementById(object.project_name)
-            projectDiv.append(task)
-        })
-    })
-    
-}
-
-function renderProjectsDOM(){
-    todoSection.innerHTML = ''
-
-    mainArray.forEach((object) => {
-        const projDiv = document.createElement('div')
-        projDiv.classList.add('todo-section-project')
-        projDiv.setAttribute('id', object.project_name)
-
+    projectContainer.innerHTML = ''
+    Projects.forEach((object) => {
+        const projBtn = document.createElement('button')
+        projBtn.classList.add('project')
+        const projLogo = document.createElement('img')
+        projLogo.setAttribute('src', 'assets/user-logo.png')
         const projName = document.createElement('p')
-        projName.classList.add('project-name')
         projName.textContent = object.project_name
 
-        projDiv.append(projName)
-        todoSection.append(projDiv)
-
+        projBtn.append(projLogo, projName)
+        projectContainer.append(projBtn)
     })
+    const projectBtn = document.querySelectorAll('.project')
+    projectBtn.forEach((object) => {
+        object.addEventListener("click", () => {
+            mainContainer.innerHTML = ''
+            Projects.forEach((item) => {
+                if (item.project_name === object.textContent.trim()) {
 
-    renderTasksDOM()
-    
+                    renderTasksDOM(item)
+                }
+            })
+        })
+    })
 }
+
 
 addProjectBtn.addEventListener("click", () => {
     projectDialog.show()
@@ -121,18 +143,16 @@ closeProjectDialog.addEventListener("click", (e) => {
 })
 
 addTaskBtn.addEventListener("click", () => {
-    
+
     taskDialog.show()
 })
 
 closeTaskDialog.addEventListener("click", (e) => {
     e.preventDefault()
 
-
-
     taskDialog.close()
     updateTasks()
-    renderTasksDOM()
-
 
 })
+
+renderProjectsDOM()
