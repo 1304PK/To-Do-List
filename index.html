@@ -17,23 +17,23 @@
         </div>
 
         <div id="action-container">
-            <button class="action" id="add-project">
+            <button class="action sidebar-button" id="add-project">
 
                 <img src="assets/user-logo.png" alt="">
                 <span>Add Project</span>
             </button>
-            <div class="action">
+            <button class="action sidebar-button">
                 <img src="assets/user-logo.png" alt="">
                 Today
-            </div>
-            <div class="action">
+            </button>
+            <button class="action sidebar-button">
                 <img src="assets/user-logo.png" alt="">
                 View Projects
-            </div>
-            <div class="action">
+            </button>
+            <button class="action sidebar-button">
                 <img src="assets/user-logo.png" alt="">
                 Search
-            </div>
+            </button>
         </div>
 
         <div id="project-section">
@@ -96,26 +96,30 @@
     </button>
 
     <dialog id="project-dialog">
-        <h2>add project</h2>
+        <h1>Add Project</h1>
         <form id="project-form">
-            <label for="project-input"></label>
-            <input type="text" id="project-input">
+            <label for="project-input">Project Name</label>
+            <input type="text" id="project-input" placeholder="My Project">
             <button id="project-dialog-close">
-                CLOSE BITCH
+                ADD
             </button>
         </form>
-    </dialog>
+    </dialog>   
 
     <dialog id="task-dialog">
-        <h2>add Task</h2>
+        <h1>Add Task</h1>
         <form id="task-form">
+            <div>
             <label for="project-options">Select the Project</label>
             <select id="project-options">
             </select>
-            <label for="task-input"></label>
-            <input type="text" id="task-input">
+        </div>
+        <div>
+            <label for="task-input">Task Name</label>
+            <input type="text" id="task-input" placeholder="My Task">
+        </div>
             <button id="task-dialog-close">
-                CLOSE BITCH
+                ADD
             </button>
         </form>
     </dialog>
